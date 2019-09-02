@@ -7,6 +7,7 @@ const forecast = require('./utils/forecast')
 
 
 const app = express()
+const port = process.env.PORT || 3000
 
 //Define paths for express config
 const publicDir = path.join(__dirname,'../public')
@@ -49,7 +50,7 @@ app.get('/help', (req,res) => {
 app.get('/weather',(req,res) => {
     if(!req.query.address){
         return res.send({
-            error : 'you must provide an address'
+            error : 'You must provide an address.'
         })
     }
     geoCode(req.query.address, (error,{latitude,longitude,location}={})=> {
@@ -75,7 +76,7 @@ app.get('/weather',(req,res) => {
 app.get('/products',(req,res)=>{
     if(!req.query.search){
         return res.send({
-            error: 'You must provide a search term'
+            error: 'You must provide a search term.'
         })
         
     }
@@ -98,6 +99,6 @@ app.get('*', (req,res) => {
         errorMsg:'Page not found ! '
     })
 })
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log('Server is up on port '+port)
 })
