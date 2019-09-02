@@ -1,5 +1,3 @@
-console.log('client side js')
-
 //fetch api is not part of node js 
 
 
